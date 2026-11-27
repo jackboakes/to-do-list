@@ -1,6 +1,6 @@
 import "./base.css";
 
-import { default as state } from "./modules/state.js";
+import { state, SIDEBAR_FOLDER, SIDEBAR_TASK } from "./modules/state.js";
 import { TaskFolder } from "./modules/taskfolder.js";
 import { createSideBar } from "./modules/sidebar/sidebar.js";
 import { createMainPanel } from "./modules/mainpanel/mainpanel.js";
@@ -26,9 +26,15 @@ function initialise() {
     hobbies.addTask("Degrease the Steering Wheel", "");
     hobbies.addTask("Clean Musket", "");
     state.taskFolders.push(hobbies);
+
+    PubSub.subscribe(SIDEBAR_TASK, function(msg, data) {
+        createTaskPanel(data);
+    });
+
+    createSideBar();
+    createMainPanel();
+    createTaskPanel(stringBow);
 }
 
 initialise();
-createSideBar();
-createMainPanel();
-createTaskPanel();
+

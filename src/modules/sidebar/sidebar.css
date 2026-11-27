@@ -33,3 +33,9 @@
 .task-folder-title {
     font-weight: 600;
 }
+
+.task-folder-title:hover,
+.side-bar-task:hover {
+    background-color: #6F94E8;
+    cursor: pointer;
+}
