@@ -73,6 +73,7 @@ body {
     height: 100vh;
     padding-block: 24px;
     color: white;
+    min-width: 280px;
 }
 
 .side-bar p {

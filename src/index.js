@@ -1,45 +1,22 @@
 import "./base.css";
 
-function createFolder(title) {
-    const folder = document.createElement("div");
-    folder.classList.add("task-folder");
-    const folderTitle = document.createElement("h2");
-    folderTitle.innerText = title;
+import { default as state } from "./modules/state.js";
+import { TaskFolder } from "./modules/taskfolder.js";
+import { createSideBar } from "./modules/sidebar.js";
 
-    folder.append(folderTitle);
+function initialise() {
+    const today = new TaskFolder("Today");
+    today.addTask("Partake in the day", "Keep today simple. Check in with yourself and take a moment to manage your stress.");
+    today.addTask("String Odysseus Bow", "");
+    today.addTask("Make Paper Crane", "");
+    today.addTask("Throw Party for Camel", "");
+    state.taskFolders.push(today);
 
-    return folder;
-}
-
-function appendFolder(folder, title) {
-    const taskTitle = document.createElement("p");
-    taskTitle.innerText = "- " + title;
-    folder.appendChild(taskTitle);
-}
-
-function createSideBar() {
-    const header = document.createElement("header");
-    const title = document.createElement("p");
-    title.innerText = "Jack Boakes";
-    header.appendChild(title);
-
-    const addButton = document.createElement("button");
-    addButton.innerText = "+ Add task";
-
-    const folder = createFolder("Hobbies");
-    appendFolder(folder, "Listen to Geese");
-    appendFolder(folder, "Degrease the Steering Wheel");
-    appendFolder(folder, "Clean the Musket");
-
-    const today = createFolder("Today");
-    appendFolder(today, "String Odysseus Bow");
-    appendFolder(today, "Throw Party for Camel");
-    appendFolder(today, "Make Paper Crane");
-
-    const sideBar = document.createElement("div");
-    sideBar.classList.add("side-bar");
-    sideBar.append(header, addButton, today, folder);
-    document.querySelector("#content").appendChild(sideBar);
+    const hobbies = new TaskFolder("Hobbies");
+    hobbies.addTask("Listen to Geese", "");
+    hobbies.addTask("Degrease the Steering Wheel", "");
+    hobbies.addTask("Clean Musket", "");
+    state.taskFolders.push(hobbies);
 }
 
 function createMainPanel() {
@@ -71,7 +48,7 @@ function createTaskView() {
     title.innerText = "Listen to Geese";
 
     const description = document.createElement("p");
-    description.innerText = "Keep today simple. Check in with yourself and take a moment to manage your stress levels."
+    description.innerText = "Keep today simple. Check in with yourself and take a moment to manage your stress."
 
     const taskView = document.createElement("div");
     taskView.classList.add("task-view");
@@ -88,6 +65,7 @@ function createTaskView() {
     document.querySelector(".main-panel").appendChild(taskView);
 }
 
+initialise();
 createSideBar();
 createMainPanel();
 createTaskView();
