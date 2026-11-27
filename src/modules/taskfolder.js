@@ -2,6 +2,7 @@ class SubTaskItem {
     title;
     constructor(title) {
         this.id = crypto.randomUUID();
+        this.title = title;
     }
 }
 
@@ -10,6 +11,7 @@ class SubTask {
     checked = false;
     constructor(title) {
         this.id = crypto.randomUUID();
+        this.title = title;
     }
 }
 
@@ -21,6 +23,12 @@ class Task {
         this.id = crypto.randomUUID();
         this.title = title;
         this.description = description;
+    }
+
+    addSubTask(title) {
+        const subTask = new SubTask(title);
+        this.subTasks.push(subTask);
+        return subTask;
     }
 }
 
@@ -35,6 +43,7 @@ class TaskFolder {
     addTask(title, description) {
         const task = new Task(title, description);
         this.tasks.push(task);
+        return task;
     }
 }
 

@@ -11,11 +11,11 @@
     margin-bottom: 5px;
 }
 
-.sub-task {
+.task-panel-task {
     margin-top: 50px;
 }
 
-.sub-task h2 {
+.task-panel-task-title {
     font-weight: 600;
     padding-bottom: 5px;
     margin-bottom: 5px;

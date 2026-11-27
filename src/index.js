@@ -9,7 +9,14 @@ import { createTaskPanel } from "./modules/taskpanel/taskpanel.js";
 function initialise() {
     const today = new TaskFolder("Today");
     today.addTask("Partake in the day", "Keep today simple. Check in with yourself and take a moment to manage your stress.");
-    today.addTask("String Odysseus Bow", "");
+
+    const stringBow = today.addTask("String Odysseus Bow", "String the bow to win back your wife Penelope.");
+    stringBow.addSubTask("Take the bow into your hands");
+    stringBow.addSubTask("Inspect and prepare the bow");
+    stringBow.addSubTask("Bend the bow with ease");
+    stringBow.addSubTask("String the bow successfully");
+    stringBow.addSubTask("Draw the bowstring back");
+
     today.addTask("Make Paper Crane", "");
     today.addTask("Throw Party for Camel", "");
     state.taskFolders.push(today);

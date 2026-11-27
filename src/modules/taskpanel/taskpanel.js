@@ -1,41 +1,45 @@
 import "./taskpanel.css";
+import { default as state } from "../state.js";
 
-function createSubTask(title) {
-    const subTaskTitle = document.createElement("h2");
-    subTaskTitle.innerText = title;
+function createTask(task) {
+    const taskTitle = document.createElement("h2");
+    taskTitle.innerText = task.title;
+    taskTitle.classList.add("task-panel-task-title");
 
-    const subTask = document.createElement("div");
-    subTask.classList.add("sub-task");
-    subTask.appendChild(subTaskTitle);
-    return subTask;
-}
-
-function appendSubTaskItem(subTask, title) {
-    const item = document.createElement("p");
-    item.innerText = "- " + title;
-
-    subTask.appendChild(item);
+    const newTask = document.createElement("div");
+    newTask.classList.add("task-panel-task");
+    newTask.appendChild(taskTitle);
+    return newTask;
 }
 
 function createTaskPanel() {
     const title = document.createElement("h1");
-    title.innerText = "Listen to Geese";
-
     const description = document.createElement("p");
-    description.innerText = "Keep today simple. Check in with yourself and take a moment to manage your stress."
+
+    state.taskFolders.forEach((folder) => {
+        folder.tasks.forEach((task) => {
+            if(task.title === "String Odysseus Bow") {
+                title.innerText = task.title;
+                description.innerText = task.description;
+            }
+        })
+    });
 
     const taskView = document.createElement("div");
     taskView.classList.add("task-panel");
     taskView.append(title, description);
 
-    const stringBow = createSubTask("String Odysseus Bow");
-    taskView.appendChild(stringBow);
-    appendSubTaskItem(stringBow, "Take the bow into your hands");
-    appendSubTaskItem(stringBow, "Inspect and prepare the bow");
-    appendSubTaskItem(stringBow, "Bend the bow with ease");
-    appendSubTaskItem(stringBow, "String the bow successfully");
-    appendSubTaskItem(stringBow, "Draw the bowstring back");
-
+    state.taskFolders.forEach((folder) => {
+        folder.tasks.forEach((task) => {
+            if(task.title === "String Odysseus Bow") {
+                task.subTasks.forEach((subTask) =>{
+                    const newSubTask = createTask(subTask);
+                    taskView.appendChild(newSubTask);
+                });
+            }
+        });
+    });
+    
     document.querySelector(".main-panel").appendChild(taskView);
 }
 

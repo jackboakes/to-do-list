@@ -2,8 +2,9 @@ import "./sidebar.css";
 import { default as state } from "../state.js";
 
 function createTaskFolder(taskFolder) {
-    const folderTitle = document.createElement("p");
+    const folderTitle = document.createElement("h2");
     folderTitle.innerText = taskFolder.title;
+    folderTitle.classList.add("task-folder-title");
 
     const folder = document.createElement("div");
     folder.classList.add("task-folder");
