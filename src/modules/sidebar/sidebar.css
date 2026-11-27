@@ -1,0 +1,35 @@
+.side-bar {
+    background-color: var(--blue);
+    height: 100vh;
+    padding-block: 24px;
+    color: white;
+    min-width: 280px;
+}
+
+.side-bar-title {
+    white-space: nowrap;
+}
+
+.side-bar button {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    font-family: var(--font);
+    font-size: inherit;
+    text-align: left;
+}
+
+.task-folder {
+    margin-top: 40px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px white;
+}
+
+.task-folder > * {
+    padding-inline: 10px;
+}
+
+.task-folder h2 {
+    font-weight: 600;
+}

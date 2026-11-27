@@ -1,4 +1,5 @@
-import { default as state } from "./state.js";
+import "./sidebar.css";
+import { default as state } from "../state.js";
 
 function createTaskFolder(taskFolder) {
     const folderTitle = document.createElement("p");
@@ -20,6 +21,7 @@ function createTask(task) {
 function createSideBar() {
     const header = document.createElement("header");
     const title = document.createElement("p");
+    title.classList.add("side-bar-title");
     title.innerText = "Jack Boakes";
     header.appendChild(title);
 
